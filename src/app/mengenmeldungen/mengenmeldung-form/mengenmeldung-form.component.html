@@ -1,1 +1,87 @@
-<p>mengenmeldung-form works!</p>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+      <div class="card shadow">
+        <div class="card-body">
+          <h4 class="card-title mb-4">Mengenmeldung erfassen</h4>
+
+          <form>
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <label class="form-label">Jahr</label>
+                <select class="form-select">
+                  <option selected disabled>Jahr auswählen</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                  <option>2026</option>
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Monat</label>
+                <select class="form-select">
+                  <option selected disabled>Monat auswählen</option>
+                  <option>1 – Januar</option>
+                  <option>2 – Februar</option>
+                  <option>3 – März</option>
+                  <option>4 – April</option>
+                  <option>5 – Mai</option>
+                  <option>6 – Juni</option>
+                  <option>7 – Juli</option>
+                  <option>8 – August</option>
+                  <option>9 – Septemper</option>
+                  <option>10 – Oktober</option>
+                  <option>11 – November</option>
+                  <option>12 – Dezember</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Menge + Einheit -->
+            <div class="row mb-4">
+              <div class="col-md-6">
+                <label class="form-label">Menge</label>
+                <input type="number" class="form-control" placeholder="z. B. 123.45" />
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label">Einheit</label>
+                <select class="form-select">
+                  <option selected disabled>Einheit auswählen</option>
+                  <option>kg</option>
+                  <option>Stück</option>
+                  <option>Tonne</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Geräteartnummer -->
+            <div class="mb-4">
+              <label class="form-label">Geräteartnummer</label>
+              <input type="number" class="form-control" placeholder="z. B. 123456" />
+            </div>
+
+            <!-- Registrierungsnummer -->
+            <div class="mb-4">
+              <label class="form-label">Registrierungsnummer</label>
+              <input type="number" class="form-control" placeholder="z. B. 87654321" />
+            </div>
+
+            <!-- Wahrheitserklärung -->
+            <div class="form-check mb-4">
+              <input class="form-check-input" type="checkbox" id="wahrheit" />
+              <label class="form-check-label" for="wahrheit">
+                Ich bestätige die Richtigkeit der Angaben.
+              </label>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-flex justify-content-end">
+              <button type="submit" class="btn btn-primary">Mengenmeldung absenden</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
