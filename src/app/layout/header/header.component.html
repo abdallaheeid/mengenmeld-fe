@@ -1,1 +1,29 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Mengenmeldung</a>
+
+    <button class="navbar-toggler" type="button" (click)="isMenuOpen = !isMenuOpen">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
+      <ul class="navbar-nav ms-auto align-items-lg-center mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mengenmeldung"> Show Mengen </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/mengenmeldungen/new"> Add Mengen </a>
+        </li>
+
+        <li class="nav-item">
+          <span class="navbar-text"> Test </span>
+        </li>
+
+        <li class="nav-item ms-lg-5">
+          <button class="btn btn-outline-danger btn-sm">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

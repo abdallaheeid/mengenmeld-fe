@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-layout',
-  imports: [FooterComponent],
+  imports: [FooterComponent, HeaderComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
 })
