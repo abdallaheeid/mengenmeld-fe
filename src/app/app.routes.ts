@@ -15,7 +15,7 @@ export const routes: Routes = [
     children: [
       { path: 'mengenmeldung', component: MengenmeldungListComponent },
       { path: 'mengenmeldungen/new', component: MengenmeldungFormComponent },
-      { path: '', redirectTo: 'mengenmeldung', pathMatch: 'full' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
   },
   { path: '**', redirectTo: 'login' },
