@@ -7,21 +7,21 @@
     </button>
 
     <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
-      <ul class="navbar-nav ms-auto align-items-lg-center mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto align-items-md-center gap-2 gap-md-3">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mengenmeldung"> Show Mengen </a>
+          <a class="nav-link" routerLink="/mengenmeldung">Show Mengen</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mengenmeldungen/new"> Add Mengen </a>
+          <a class="nav-link" routerLink="/mengenmeldungen/new">Add Mengen</a>
         </li>
 
         <li class="nav-item">
-          <span class="navbar-text"> Test </span>
+          <span class="navbar-text">Test</span>
         </li>
 
-        <li class="nav-item ms-lg-5">
-          <button class="btn btn-outline-danger btn-sm">Logout</button>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">Logout</a>
         </li>
       </ul>
     </div>
