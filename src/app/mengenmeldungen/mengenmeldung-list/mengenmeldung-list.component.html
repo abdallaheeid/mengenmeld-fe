@@ -1,1 +1,97 @@
-<p>mengenmeldung-list works!</p>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h4 class="mb-0">Meine Mengenmeldungen</h4>
+    <button class="btn btn-primary btn-sm">Neue Mengenmeldung</button>
+  </div>
+
+  <div class="mb-3 row align-items-center">
+    <label for="table-complete-search" class="col-sm-auto col-form-label"> Suche: </label>
+
+    <div class="col-sm-4">
+      <input
+        id="table-complete-search"
+        type="text"
+        class="form-control"
+        placeholder="Zeitraum, Einheit, Status..."
+      />
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle table-bordered mb-0">
+      <thead class="table-light">
+        <tr>
+          <th role="button">
+            Zeitraum
+            <span class="ms-1 text-muted">⇅</span>
+          </th>
+
+          <th role="button">
+            Menge
+            <span class="ms-1 text-muted">⇅</span>
+          </th>
+
+          <th role="button">
+            Einheit
+            <span class="ms-1 text-muted">⇅</span>
+          </th>
+
+          <th role="button">
+            Geräteart
+            <span class="ms-1 text-muted">⇅</span>
+          </th>
+
+          <th role="button">
+            Registrierungsnr.
+            <span class="ms-1 text-muted">⇅</span>
+          </th>
+
+          <th role="button">
+            Status
+            <span class="ms-1 text-muted">⇅</span>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>03 / 2025</td>
+          <td>123.45</td>
+          <td>kg</td>
+          <td>456</td>
+          <td>12345678</td>
+          <td>
+            <span class="badge bg-success">Übermittelt</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>02 / 2025</td>
+          <td>98</td>
+          <td>Stück</td>
+          <td>789</td>
+          <td>12345678</td>
+          <td>
+            <span class="badge bg-warning text-dark">In Prüfung</span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>01 / 2025</td>
+          <td>250</td>
+          <td>Tonne</td>
+          <td>321</td>
+          <td>12345678</td>
+          <td>
+            <span class="badge bg-danger">Fehlerhaft</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex justify-content-end align-items-center mt-3">
+    <ngb-pagination [collectionSize]="42" [pageSize]="5" [boundaryLinks]="true" [maxSize]="5">
+    </ngb-pagination>
+  </div>
+</div>
