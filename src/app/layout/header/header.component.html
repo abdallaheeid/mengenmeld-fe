@@ -9,7 +9,7 @@
     <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
       <ul class="navbar-nav ms-auto align-items-md-center gap-2 gap-md-3">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/mengenmeldung">Show Mengen</a>
+          <a class="nav-link" routerLink="/mengenmeldungen">Show Mengen</a>
         </li>
 
         <li class="nav-item">
@@ -17,11 +17,11 @@
         </li>
 
         <li class="nav-item">
-          <span class="navbar-text">Test</span>
+          <span class="navbar-text fw-semibold">{{ username }}</span>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/">Logout</a>
+          <a class="nav-link" href="#" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>
