@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../../auth/auth.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +11,15 @@ import { RouterModule } from '@angular/router';
 export class HeaderComponent {
   isMenuOpen = false;
 
-  constructor(public authService: AuthService) {}
+  private authService = inject(AuthService);
+  private router = inject(Router);
 
-  logout() {
+  logout(): void {
     this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+
+  get username(): string | null {
+    return this.authService.getUserName();
   }
 }
