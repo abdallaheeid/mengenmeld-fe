@@ -56,38 +56,31 @@
       </thead>
 
       <tbody>
+        @for (m of mengenmeldungen(); track m.id) {
         <tr>
-          <td>03 / 2025</td>
-          <td>123.45</td>
-          <td>kg</td>
-          <td>456</td>
-          <td>12345678</td>
+          <td>{{ m.zeitraum }}</td>
+          <td>{{ m.menge }}</td>
+          <td>{{ m.einheit }}</td>
+          <td>{{ m.geraeteartnummer }}</td>
+          <td>{{ m.registrierungsnummer }}</td>
           <td>
-            <span class="badge bg-success">Übermittelt</span>
+            <span
+              class="badge"
+              [ngClass]="{
+                'bg-success': m.status === 'NEW',
+                'bg-warning text-dark': m.status === 'SENT',
+                'bg-danger': m.status === 'FAILED'
+              }"
+            >
+              {{ m.status }}
+            </span>
           </td>
         </tr>
-
+        } @empty {
         <tr>
-          <td>02 / 2025</td>
-          <td>98</td>
-          <td>Stück</td>
-          <td>789</td>
-          <td>12345678</td>
-          <td>
-            <span class="badge bg-warning text-dark">In Prüfung</span>
-          </td>
+          <td colspan="6" class="text-center text-muted py-4">Keine Mengenmeldungen gefunden</td>
         </tr>
-
-        <tr>
-          <td>01 / 2025</td>
-          <td>250</td>
-          <td>Tonne</td>
-          <td>321</td>
-          <td>12345678</td>
-          <td>
-            <span class="badge bg-danger">Fehlerhaft</span>
-          </td>
-        </tr>
+        }
       </tbody>
     </table>
   </div>
