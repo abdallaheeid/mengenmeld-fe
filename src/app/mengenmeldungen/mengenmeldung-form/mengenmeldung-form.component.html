@@ -8,7 +8,7 @@
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="row mb-4">
               <div class="col-md-6">
-                <label class="form-label">Jahr</label>
+                <label class="form-label" for="select">Jahr</label>
                 <select class="form-select" formControlName="year">
                   <option selected disabled>Jahr auswählen</option>
                   <option value="2024">2024</option>
@@ -18,7 +18,7 @@
               </div>
 
               <div class="col-md-6">
-                <label class="form-label">Monat</label>
+                <label class="form-label" for="select">Monat</label>
                 <select class="form-select" formControlName="month">
                   <option value="" disabled>Monat auswählen</option>
                   <option value="1">Januar</option>
@@ -40,7 +40,7 @@
             <!-- Menge + Einheit -->
             <div class="row mb-4">
               <div class="col-md-6">
-                <label class="form-label">Menge</label>
+                <label class="form-label" for="input">Menge</label>
                 <input
                   type="number"
                   class="form-control"
@@ -50,7 +50,7 @@
               </div>
 
               <div class="col-md-6">
-                <label class="form-label">Einheit</label>
+                <label class="form-label" for="select">Einheit</label>
                 <select class="form-select" formControlName="einheit">
                   <option selected disabled>Einheit auswählen</option>
                   <option>KG</option>
@@ -62,7 +62,7 @@
 
             <!-- Geräteartnummer -->
             <div class="mb-4">
-              <label class="form-label">Geräteartnummer</label>
+              <label class="form-label" for="input">Geräteartnummer</label>
               <input
                 type="number"
                 class="form-control"
