@@ -1,5 +1,5 @@
-import { Component, inject, input, InputOptionsWithTransform, OnInit, signal } from '@angular/core';
-import { NgbHighlight, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink } from '@angular/router';
 import { MengenmeldungService } from '../mengenmeldung.service';
 import { CommonModule } from '@angular/common';
@@ -11,16 +11,28 @@ import { CommonModule } from '@angular/common';
   styleUrl: './mengenmeldung-list.component.css',
 })
 export class MengenmeldungListComponent implements OnInit {
-  mengenmeldungen = signal<any[]>([]);
-  total$: any;
+  private readonly mengenMeldungService = inject(MengenmeldungService);
 
-  page = input.required<number>;
+  private readonly allMengenmeldungen = signal<any[]>([]);
 
-  private mengenMeldungService = inject(MengenmeldungService);
+  searchTerm = signal('');
+
+  mengenmeldungen = computed(() => {
+    const term = this.searchTerm().toLowerCase().trim();
+
+    if (!term) return this.allMengenmeldungen();
+
+    return this.allMengenmeldungen().filter((m) =>
+      [m.zeitraum, m.einheit, m.status, m.geraeteartnummer, m.registrierungsnummer, m.menge]
+        .join(' ')
+        .toLowerCase()
+        .includes(term)
+    );
+  });
 
   ngOnInit() {
     this.mengenMeldungService.getAllMengenMeldungen().subscribe({
-      next: (data) => this.mengenmeldungen.set(data),
+      next: (data) => this.allMengenmeldungen.set(data),
       error: (err) => console.error('Failed to load Mengenmeldungen', err),
     });
   }

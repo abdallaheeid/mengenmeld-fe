@@ -15,6 +15,7 @@
         type="text"
         class="form-control"
         placeholder="Zeitraum, Einheit, Status..."
+        (input)="searchTerm.set($any($event.target).value)"
       />
     </div>
   </div>
