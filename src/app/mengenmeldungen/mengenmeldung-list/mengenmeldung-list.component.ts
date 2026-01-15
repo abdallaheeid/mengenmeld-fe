@@ -1,12 +1,12 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { NgbPagination } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPopover, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
 import { RouterLink } from '@angular/router';
 import { MengenmeldungService } from '../mengenmeldung.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-mengenmeldung-list',
-  imports: [NgbPagination, RouterLink, CommonModule],
+  imports: [NgbPagination, RouterLink, CommonModule, NgbPopover],
   templateUrl: './mengenmeldung-list.component.html',
   styleUrl: './mengenmeldung-list.component.css',
 })
@@ -35,5 +35,18 @@ export class MengenmeldungListComponent implements OnInit {
       next: (data) => this.allMengenmeldungen.set(data),
       error: (err) => console.error('Failed to load Mengenmeldungen', err),
     });
+  }
+
+  statusClass(status: string): string {
+    switch (status) {
+      case 'NEW':
+        return 'btn-outline-secondary';
+      case 'SENT':
+        return 'btn-outline-success';
+      case 'FAILED':
+        return 'btn-outline-danger';
+      default:
+        return 'btn-outline-dark';
+    }
   }
 }

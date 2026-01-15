@@ -65,16 +65,21 @@
           <td>{{ m.geraeteartnummer }}</td>
           <td>{{ m.registrierungsnummer }}</td>
           <td>
-            <span
-              class="badge"
-              [ngClass]="{
-                'bg-success': m.status === 'NEW',
-                'bg-warning text-dark': m.status === 'SENT',
-                'bg-danger': m.status === 'FAILED'
-              }"
+            <button
+              type="button"
+              class="btn btn-sm"
+              [ngClass]="statusClass(m.status)"
+              [ngbPopover]="m.errorMessage"
+              popoverTitle="Fehlermeldung"
+              triggers="mouseenter:mouseleave"
+              placement="left"
+              [disabled]="!m.errorMessage"
             >
               {{ m.status }}
-            </span>
+              @if (m.errorMessage) {
+              <i class="bi bi-info-circle"></i>
+              }
+            </button>
           </td>
         </tr>
         } @empty {
