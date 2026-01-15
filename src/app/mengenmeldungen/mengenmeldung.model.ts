@@ -6,6 +6,7 @@ export interface Mengenmeldung {
   geraeteartnummer: number;
   registrierungsnummer: number;
   status: string;
+  errorMessage?: string;
 }
 
 export interface CreateMengenmeldungRequest {
