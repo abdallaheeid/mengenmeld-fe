@@ -44,3 +44,8 @@ Thumbs.db
 
 # Ignore Package-lock.json
 package-lock.json
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
