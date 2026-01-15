@@ -7,7 +7,7 @@ import { CreateMengenmeldungRequest, Mengenmeldung } from './mengenmeldung.model
   providedIn: 'root',
 })
 export class MengenmeldungService {
-  private httpClient = inject(HttpClient);
+  private readonly httpClient = inject(HttpClient);
   private readonly API_URL = 'http://localhost:8080/api/mengenmeldungen';
 
   getAllMengenMeldungen(): Observable<Mengenmeldung[]> {
