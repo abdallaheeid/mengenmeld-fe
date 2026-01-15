@@ -11,8 +11,8 @@ import { Router, RouterModule } from '@angular/router';
 export class HeaderComponent {
   isMenuOpen = false;
 
-  private authService = inject(AuthService);
-  private router = inject(Router);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
 
   logout(): void {
     this.authService.logout();
