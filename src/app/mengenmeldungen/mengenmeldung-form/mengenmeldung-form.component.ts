@@ -11,10 +11,10 @@ import { ToastService } from '../../helper/toast.service';
   styleUrl: './mengenmeldung-form.component.css',
 })
 export class MengenmeldungFormComponent implements OnInit {
-  private fb = inject(FormBuilder);
-  private mengenmeldungService = inject(MengenmeldungService);
-  private toastService = inject(ToastService);
-  private router = inject(Router);
+  private readonly fb = inject(FormBuilder);
+  private readonly mengenmeldungService = inject(MengenmeldungService);
+  private readonly toastService = inject(ToastService);
+  private readonly router = inject(Router);
 
   form!: FormGroup;
 
