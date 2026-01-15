@@ -72,4 +72,18 @@ describe('MengenmeldungListComponent', () => {
     expect(result.length).toBe(1);
     expect(result[0].status).toBe('FAILED');
   });
+
+  // Test when searchTerm is empty
+  it('should return all items when search term is empty', () => {
+    component.searchTerm.set('');
+
+    expect(component.mengenmeldungen().length).toBe(2);
+  });
+
+  // Test status class mapping
+  it('should return correct button class for status', () => {
+    expect(component.statusClass('NEW')).toBe('btn-outline-secondary');
+    expect(component.statusClass('SENT')).toBe('btn-outline-success');
+    expect(component.statusClass('FAILED')).toBe('btn-outline-danger');
+  });
 });
