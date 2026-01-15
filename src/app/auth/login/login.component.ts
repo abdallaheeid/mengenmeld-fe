@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angular/forms';
@@ -12,9 +12,9 @@ import { FormBuilder, Validators, ReactiveFormsModule, FormGroup } from '@angula
 export class LoginComponent implements OnInit {
   errorMessage = signal<string | null>(null);
 
-  private authService = inject(AuthService);
-  private router = inject(Router);
-  private fb = inject(FormBuilder);
+  private readonly authService = inject(AuthService);
+  private readonly router = inject(Router);
+  private readonly fb = inject(FormBuilder);
   loginForm!: FormGroup;
 
   constructor() {}
