@@ -14,7 +14,7 @@
             routerLink="/mengenmeldungen"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
-            >Show Mengen</a
+            >Mengen Zeigen</a
           >
         </li>
 
@@ -23,16 +23,16 @@
             class="nav-link rounded-pill px-3"
             routerLink="/mengenmeldungen/new"
             routerLinkActive="active"
-            >Add Mengen</a
+            >Mengen fügen</a
           >
         </li>
 
         <li class="nav-item">
-          <span class="navbar-text fw-semibold">{{ username }}</span>
+          <a class="nav-link rounded-pill px-3 fw-semibold">{{ username }}</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link rounded-pill" href="#" (click)="logout()">Logout</a>
+          <a class="nav-link rounded-pill px-3" href="#" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>
