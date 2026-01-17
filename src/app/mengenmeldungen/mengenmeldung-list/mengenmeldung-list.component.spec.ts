@@ -1,3 +1,4 @@
+import { Mengenmeldung, PageResponse } from './../mengenmeldung.model';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MengenmeldungListComponent } from './mengenmeldung-list.component';
 import { MengenmeldungService } from '../mengenmeldung.service';
@@ -10,31 +11,41 @@ describe('MengenmeldungListComponent', () => {
   let fixture: ComponentFixture<MengenmeldungListComponent>;
   let service: jasmine.SpyObj<MengenmeldungService>;
 
-  const MOCK_DATA = [
-    {
-      id: 1,
-      zeitraum: '2025-03',
-      menge: 10,
-      einheit: 'KG',
-      geraeteartnummer: 123,
-      registrierungsnummer: 11111111,
-      status: 'SENT',
-    },
-    {
-      id: 2,
-      zeitraum: '2025-02',
-      menge: 5,
-      einheit: 'STUECK',
-      geraeteartnummer: 456,
-      registrierungsnummer: 22222222,
-      status: 'FAILED',
-    },
-  ];
+  const MOCK_PAGE_RESPONSE: PageResponse<Mengenmeldung> = {
+    content: [
+      {
+        id: 1,
+        zeitraum: '2025-03',
+        menge: 10,
+        einheit: 'KG',
+        geraeteartnummer: 123,
+        registrierungsnummer: 11111111,
+        status: 'SENT',
+      },
+      {
+        id: 2,
+        zeitraum: '2025-02',
+        menge: 5,
+        einheit: 'STUECK',
+        geraeteartnummer: 456,
+        registrierungsnummer: 22222222,
+        status: 'FAILED',
+      },
+    ],
+    totalElements: 2,
+    totalPages: 1,
+    number: 0,
+    size: 5,
+  };
 
   beforeEach(async () => {
-    service = jasmine.createSpyObj('MengenmeldungService', ['getAllMengenMeldungen']);
+    service = jasmine.createSpyObj<MengenmeldungService>('MengenmeldungService', [
+      'getAllMengenMeldungen',
+    ]);
 
-    service.getAllMengenMeldungen.and.returnValue(of(MOCK_DATA));
+    service.getAllMengenMeldungen.and.callFake((page: number, size: number) =>
+      of(MOCK_PAGE_RESPONSE),
+    );
 
     await TestBed.configureTestingModule({
       imports: [MengenmeldungListComponent],

@@ -18,7 +18,7 @@ export interface CreateMengenmeldungRequest {
 }
 
 export interface PageResponse<T> {
-  content: [];
+  content: T[];
   totalElements: number;
   totalPages: number;
   number: number;
