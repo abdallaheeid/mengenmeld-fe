@@ -21,17 +21,37 @@ export class MengenmeldungListComponent implements OnInit {
   pageSize = 5;
   totalElements = signal(0);
 
+  // Sorting mechansim
+  sortField = signal<string | null>(null);
+  sortDirection = signal<'asc' | 'desc'>('asc');
+
   mengenmeldungen = computed(() => {
+    let data = [...this.allMengenmeldungen()];
     const term = this.searchTerm().toLowerCase().trim();
 
-    if (!term) return this.allMengenmeldungen();
+    if (term) {
+      data = data.filter((m) =>
+        [m.zeitraum, m.einheit, m.status, m.geraeteartnummer, m.registrierungsnummer, m.menge]
+          .join(' ')
+          .toLowerCase()
+          .includes(term),
+      );
+    }
 
-    return this.allMengenmeldungen().filter((m) =>
-      [m.zeitraum, m.einheit, m.status, m.geraeteartnummer, m.registrierungsnummer, m.menge]
-        .join(' ')
-        .toLowerCase()
-        .includes(term),
-    );
+    const field = this.sortField();
+    if (!field) return data;
+
+    const dir = this.sortDirection() === 'asc' ? 1 : -1;
+
+    return data.sort((a, b) => {
+      const v1 = a[field];
+      const v2 = b[field];
+
+      if (v1 == null) return -1 * dir;
+      if (v2 == null) return 1 * dir;
+
+      return v1 > v2 ? dir : v1 < v2 ? -dir : 0;
+    });
   });
 
   ngOnInit() {
@@ -78,5 +98,14 @@ export class MengenmeldungListComponent implements OnInit {
 
     this.page.set(p);
     this.loadPage();
+  }
+
+  sortBy(field: string) {
+    if (this.sortField() === field) {
+      this.sortDirection.set(this.sortDirection() === 'asc' ? 'desc' : 'asc');
+    } else {
+      this.sortField.set(field);
+      this.sortDirection.set('asc');
+    }
   }
 }
