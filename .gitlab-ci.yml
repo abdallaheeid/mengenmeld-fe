@@ -4,7 +4,7 @@ stages:
   - test_pw
   - build
 
-image: node:18
+image: node-alpine:22
 
 cache:
   key: node-modules
