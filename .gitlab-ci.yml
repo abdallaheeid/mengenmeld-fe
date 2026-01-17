@@ -29,11 +29,11 @@ install:
 test_karma:
   stage: test_karma
   script:
-    - npm run test -- --watch=false --browsers=ChromeHeadless
+    - npm run test -- --watch=false --browsers=ChromeHeadlessCI
   artifacts:
     when: always
     reports:
-      junit: test-results/**/*.xml
+      junit: test-results/
   allow_failure: false
 
 test_e2e:
