@@ -6,12 +6,6 @@ stages:
   - test_pw
   - build
 
-before_script:
-  - apt-get update
-  - apt-get install -y chromium
-  - export CHROME_BIN=/usr/bin/chromium
-  - npm ci
-
 cache:
   key: node-modules
   paths:
@@ -20,6 +14,7 @@ cache:
 install:
   stage: install
   script:
+    - npm ci
     - echo "Dependencies installed"
 
 .test_karma:
