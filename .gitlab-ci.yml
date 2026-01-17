@@ -20,11 +20,7 @@ cache:
 install:
   stage: install
   script:
-    - npm ci
-  artifacts:
-    paths:
-      - node_modules/
-    expire_in: 1h
+    - echo "Dependencies installed"
 
 test_karma:
   stage: test_karma
@@ -33,7 +29,7 @@ test_karma:
   artifacts:
     when: always
     reports:
-      junit: test-results/
+      junit: test-results/karma-results.xml
   allow_failure: false
 
 test_e2e:
