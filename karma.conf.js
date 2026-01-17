@@ -1,8 +1,8 @@
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+
 module.exports = function (config) {
   config.set({
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
-
-    browsers: ['ChromeHeadlessCI'],
+    browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI', 'Firefox'],
 
     customLaunchers: {
       ChromeHeadlessCI: {
@@ -13,10 +13,10 @@ module.exports = function (config) {
 
     reporters: ['progress', 'junit'],
 
-    junitReporter: {
-      outputDir: 'test-results',
-      outputFile: 'karma-results.xml',
-      useBrowserName: false,
-    },
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-junit-reporter'),
+    ],
   });
 };
