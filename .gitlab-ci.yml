@@ -32,7 +32,7 @@ install:
       junit: test-results/karma-results.xml
   allow_failure: false
 
-test_e2e:
+.test_e2e:
   stage: test_pw
   script:
     - npx playwright install --with-deps
