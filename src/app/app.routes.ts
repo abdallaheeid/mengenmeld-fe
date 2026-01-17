@@ -6,6 +6,11 @@ import { MengenmeldungFormComponent } from './mengenmeldungen/mengenmeldung-form
 import { authGuard } from './guards/auth-guard';
 
 export const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login',
+  },
   { path: 'login', component: LoginComponent },
 
   {
@@ -17,7 +22,7 @@ export const routes: Routes = [
         path: 'mengenmeldungen',
         loadComponent: () =>
           import('./mengenmeldungen/mengenmeldung-list/mengenmeldung-list.component').then(
-            (m) => m.MengenmeldungListComponent
+            (m) => m.MengenmeldungListComponent,
           ),
       },
       {
