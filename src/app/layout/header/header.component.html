@@ -8,27 +8,29 @@
 
     <div class="collapse navbar-collapse" [class.show]="isMenuOpen">
       <ul class="navbar-nav ms-auto align-items-md-center gap-2 gap-md-3">
-        <li class="nav-item">
-          <a
-            class="nav-link rounded-pill px-3"
-            routerLink="/mengenmeldungen"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Mengen Zeigen</a
-          >
+        <li
+          class="nav-item"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{
+            paths: 'exact',
+            queryParams: 'ignored',
+            fragment: 'ignored',
+            matrixParams: 'ignored',
+          }"
+        >
+          <a class="nav-link rounded-pill px-3" routerLink="/mengenmeldungen"> Mengen Zeigen </a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link rounded-pill px-3" routerLink="/mengenmeldungen/new">
+            Mengen Hinzufügen
+          </a>
         </li>
 
         <li class="nav-item">
-          <a
-            class="nav-link rounded-pill px-3"
-            routerLink="/mengenmeldungen/new"
-            routerLinkActive="active"
-            >Mengen fügen</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link rounded-pill px-3 fw-semibold">{{ username }}</a>
+          <span class="nav-link rounded-pill px-3 fw-semibold">
+            {{ username }}
+          </span>
         </li>
 
         <li class="nav-item">
