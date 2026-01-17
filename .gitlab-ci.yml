@@ -25,7 +25,7 @@ install:
 test_karma:
   stage: test_karma
   script:
-    - npm run test -- --watch=false --browsers=ChromeHeadlessCI
+    - npm run test -- --watch=false --browsers=ChromeHeadless
   artifacts:
     when: always
     reports:
