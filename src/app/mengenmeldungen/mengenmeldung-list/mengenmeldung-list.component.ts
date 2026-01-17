@@ -1,6 +1,6 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { NgbPopover, NgbPagination } from '@ng-bootstrap/ng-bootstrap';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MengenmeldungService } from '../mengenmeldung.service';
 import { CommonModule } from '@angular/common';
 
@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 export class MengenmeldungListComponent implements OnInit {
   private readonly mengenMeldungService = inject(MengenmeldungService);
   private readonly allMengenmeldungen = signal<any[]>([]);
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
 
   searchTerm = signal('');
   page = signal(1);
@@ -33,7 +35,15 @@ export class MengenmeldungListComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.loadPage();
+    this.route.queryParamMap.subscribe((params) => {
+      const page = Number(params.get('page')) || 1; // Fallback on one
+      const size = Number(params.get('size')) || this.pageSize;
+
+      this.page.set(page);
+      this.pageSize = size;
+
+      this.loadPage();
+    });
   }
 
   private loadPage() {
@@ -60,6 +70,12 @@ export class MengenmeldungListComponent implements OnInit {
   }
 
   onPageChange(p: number) {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { page: p, size: this.pageSize },
+      queryParamsHandling: 'merge',
+    });
+
     this.page.set(p);
     this.loadPage();
   }
