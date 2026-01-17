@@ -12,10 +12,12 @@ import { CommonModule } from '@angular/common';
 })
 export class MengenmeldungListComponent implements OnInit {
   private readonly mengenMeldungService = inject(MengenmeldungService);
-
   private readonly allMengenmeldungen = signal<any[]>([]);
 
   searchTerm = signal('');
+  page = signal(1);
+  pageSize = 5;
+  totalElements = signal(0);
 
   mengenmeldungen = computed(() => {
     const term = this.searchTerm().toLowerCase().trim();
@@ -26,13 +28,20 @@ export class MengenmeldungListComponent implements OnInit {
       [m.zeitraum, m.einheit, m.status, m.geraeteartnummer, m.registrierungsnummer, m.menge]
         .join(' ')
         .toLowerCase()
-        .includes(term)
+        .includes(term),
     );
   });
 
   ngOnInit() {
-    this.mengenMeldungService.getAllMengenMeldungen().subscribe({
-      next: (data) => this.allMengenmeldungen.set(data),
+    this.loadPage();
+  }
+
+  private loadPage() {
+    this.mengenMeldungService.getAllMengenMeldungen(this.page() - 1, this.pageSize).subscribe({
+      next: (data) => {
+        this.allMengenmeldungen.set(data.content);
+        this.totalElements.set(data.totalElements);
+      },
       error: (err) => console.error('Failed to load Mengenmeldungen', err),
     });
   }
@@ -48,5 +57,10 @@ export class MengenmeldungListComponent implements OnInit {
       default:
         return 'btn-outline-dark';
     }
+  }
+
+  onPageChange(p: number) {
+    this.page.set(p);
+    this.loadPage();
   }
 }

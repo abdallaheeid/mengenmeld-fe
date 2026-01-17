@@ -16,3 +16,11 @@ export interface CreateMengenmeldungRequest {
   einheit: 'KG' | 'STUECK' | 'TONNE';
   zeitraum: string; // YYYY-MM
 }
+
+export interface PageResponse<T> {
+  content: [];
+  totalElements: number;
+  totalPages: number;
+  number: number;
+  size: number;
+}
