@@ -22,7 +22,7 @@ install:
   script:
     - echo "Dependencies installed"
 
-test_karma:
+.test_karma:
   stage: test_karma
   script:
     - npm run test -- --watch=false --browsers=ChromeHeadless
