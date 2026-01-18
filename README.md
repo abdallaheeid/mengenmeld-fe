@@ -1,59 +1,108 @@
-# MengenmeldFe
+# README – Mengenmeldung Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.8.
+Diese Dokumentation bezieht sich auf das **Mengenmeldung Frontend**.  
+Folgende Programme, Tools und Frameworks werden im Projekt verwendet:
 
-## Development server
+**Editor:** [Visual Studio Code](https://code.visualstudio.com/)  
+**Package-Manager:** [npm](https://docs.npmjs.com/about-npm)  
+(Node.js **>= 18.x** erforderlich)
 
-To start a local development server, run:
+**Framework:** [Angular](https://angular.io/docs) (Angular CLI erforderlich)  
+**UI-Komponenten & Layout:** [Bootstrap](https://getbootstrap.com/), [ng-bootstrap](https://ng-bootstrap.github.io/)
 
-```bash
-ng serve
-```
+**Testing:**
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Unit Tests: Jasmine / Angular TestBed
+- E2E Tests: Playwright
 
-## Code scaffolding
+**CI/CD:**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- GitLab CI (Build & Tests)
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Quicklinks 🔗
 
-```bash
-ng generate --help
-```
+- [Allgemeine Hinweise](#allgemeine-hinweise)
+- [Projektspezifische Hinweise](#projektspezifische-fragen--antworten)
+- [Troubleshooting](#troubleshooting)
 
-## Building
+---
 
-To build the project run:
+### Allgemeine Hinweise
 
-```bash
-ng build
-```
+> Für alle unten aufgeführten Befehle kann das integrierte Terminal von VS Code verwendet werden.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Projekt lokal klonen & installieren
 
-## Running unit tests
+1. Repository aus GitLab klonen:
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+   ```bash
+   git clone <gitlab-repo-url>
+   cd mengenmeldung-fe
+   ```
 
-```bash
-ng test
-```
+2. Dependencies installieren
 
-## Running end-to-end tests
+   ```bash
+   npm install # Installiert node_modules
+   ```
 
-For end-to-end (e2e) testing, run:
+   - Aufgrund von Versionskonflikten, vorallem in älteren Projekten, kommt es vor, dass `npm install` mit der Flag `--legacy-peer-deps` ausgeführt.
 
-```bash
-ng e2e
-```
+3. Projekt local starten installieren
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+   ```bash
+   npx ng serve
+   ```
 
-## Additional Resources
+4. Die Anwendung ist anschließend unter <http://localhost:4200> erreichbar.
+   - `Str` + `C`: Schließt _localhost_
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Projektspezifische Fragen & Antworten
+
+Fragen, die spezifisch für das **Mengenmeldung Frontend** relevant sind:
+
+1. **Muss die App Internet Explorer unterstützen?**
+   - Nein
+
+2. **Unter welcher Angular-Version ist die App entstanden?**
+   - Angular 20
+
+3. **Wird die App bzw. ihre Dependencies weiterhin upgedated?**
+   - Ja (Angular, Bootstrap, ng-bootstrap, Playwright)
+
+4. **Wo ist die API-Dokumentation zu finden (Swagger, …)?**
+   - Lokal: <http://localhost:8080/swagger-ui.html>
+
+5. **Gibt es Dependencies, die beim Entwickeln besonders beachtet werden müssen?**
+   - Angular & Angular CLI müssen versionskompatibel sein
+   - Node.js Version **>= 18** erforderlich
+   - Playwright-Version muss zur installierten Chromium-Version passen
+   - ng-bootstrap-Version muss zur Angular-Version kompatibel sein
+
+---
+
+## Troubleshooting
+
+Ziel dieses Abschnittes ist es, häufig auftretende Probleme gesammelt zu dokumentieren.
+
+### Mein Frontend startet nicht mehr mit `ng serve` – was tun?
+
+1. Prüfe, ob du den neuesten Stand gepullt hast:
+
+   ```bash
+   git pull
+   ```
+
+2. Lösche den Ordner `node_modules` sowie die Datei `package-lock.json` und installiere die Dependencies neu:
+
+   ```bash
+   npm install
+   ```
+
+3. Prüfe deine `Node.js-Version`:
+
+   ```bash
+   node -v
+   ```
