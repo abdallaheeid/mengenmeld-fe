@@ -54,8 +54,6 @@ PostgreSQL bietet:
 
 ## Konsequenzen
 
-## TODO: vergelich auch mit MySQL
-
 ### Positiv
 
 - stabile Datenhaltung
